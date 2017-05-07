@@ -1,3 +1,1 @@
-# Mechavian
-
 Welcome to [www.mechavian.com](https://www.mechavian.com)!
