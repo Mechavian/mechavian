@@ -1,0 +1,77 @@
+﻿<ma-navbar></ma-navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h2>Set up your organization</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-danger" role="alert" ng-cloak ng-show="!!errorMessage">
+        <div>
+            <i class="fa fa-2x fa-exclamation-triangle"></i>
+            <h4 id="errorText">{{errorMessage}}</h4>
+        </div>
+    </div>
+
+    <form role="form"
+          name="createOrgForm"
+          novalidate
+          ng-disable="isBusy"
+          ng-submit="createOrg()">
+
+        <div class="form-group"
+             ng-class="{'has-error': createOrgForm.displayName.$dirty && createOrgForm.displayName.$invalid}">
+            <label class="control-label" for="display-name">Display Name</label>
+            <input id="display-name"
+                   name="displayName"
+                   class="form-control"
+                   placeholder="Enter your organization's name"
+                   required
+                   ng-Minlength="1"
+                   ng-Maxlength="255"
+                   ng-model="displayName"/>
+            <div class="text-danger"
+               ng-show="createOrgForm.displayName.$dirty && createOrgForm.displayName.$invalid">
+                <i class="fa fa-asterisk"></i>
+                <span ng-show="createOrgForm.displayName.$error.maxlength">A display name must be no greater than 255 characters in length.</span>
+                <span ng-show="createOrgForm.displayName.$error.required">This field is required.</span>
+            </div>
+        </div>
+
+        <div class="form-group"
+             ng-class="{'has-error': createOrgForm.shortName.$dirty && createOrgForm.shortName.$invalid}">
+            <label class="control-label" for="short-name">Short Name</label>
+            <input id="short-name"
+                   name="shortName"
+                   class="form-control"
+                   placeholder="Enter a unique label for the URL"
+                   required
+                   pattern="^[a-zA-Z0-9][a-zA-Z0-9\-]*$"
+                   ng-Minlength="1"
+                   ng-Maxlength="63"
+                   ng-model="shortName"
+                   force-lowercase/>
+            <div class="text-danger"
+               ng-show="createOrgForm.shortName.$dirty && createOrgForm.shortName.$invalid">
+                <i class="fa fa-asterisk"></i>
+                <span ng-show="createOrgForm.shortName.$error.pattern">A short name must start with a letter or number and can be followed by any letter, number, or dash. For example, &quot;my-org3&quot;.</span>
+                <span ng-show="createOrgForm.shortName.$error.maxlength">A short name must be no greater than 63 characters in length.</span>
+                <span ng-show="createOrgForm.shortName.$error.required">This field is required.</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Direct Link</label>
+            <p class="form-control-static">{{directLink}}</p>
+        </div>
+
+        <div class="form-group">
+            <button type="submit"
+                    class="btn btn-primary"
+                    ng-disabled="!createOrgForm.$valid">Create Organization</button>
+        </div>
+    </form>
+</div>

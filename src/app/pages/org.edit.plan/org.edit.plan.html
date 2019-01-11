@@ -1,0 +1,43 @@
+﻿<div class="alert alert-danger" role="alert" ng-cloak ng-show="!!errorMessage">
+    <div>
+        <i class="fa fa-2x fa-exclamation-triangle"></i>
+        <h4 id="errorText">{{errorMessage}}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4"
+         ng-repeat="plan in plans | orderBy:'Amount'">
+        <div class="plan">
+            <div class="text-center">
+                <h3>
+                    {{plan.DisplayString}}
+                </h3>
+            </div>
+            <div class="text-center">
+                <i class="fa fa-users"></i> Max Users:
+                <span ng-show="plan.MaxUsers === 2147483647"><i>Unlimited</i></span>
+                <span ng-hide="plan.MaxUsers === 2147483647">{{plan.MaxUsers}}</span>
+            </div>
+            <div class="text-center">
+                <h4 ng-show="plan.Amount !== 0">{{plan.Amount/100 | currency}}/month</h4>
+                <h4 ng-hide="plan.Amount !== 0">
+                    <i>FREE</i>
+                </h4>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary"
+                        ng-hide="plan._ui.isSelected"
+                        ng-click="selectPlan($event, plan)"
+                        ng-disabled="isBusy">
+                    Select Plan
+                </button>
+                <a class="btn btn-default disabled"
+                   href="#"
+                   ng-show="plan._ui.isSelected">
+                    <i class="fa fa-check"></i>Selected
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
