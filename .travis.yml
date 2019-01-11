@@ -1,14 +1,19 @@
+language: node_js
+node_js:
+  - "8.11.3"
+
+install:
+  - npm install grunt-cli -g
+  - npm install
+
+script:
+  - grunt build
+
 deploy:
+  provider: pages
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   skip-cleanup: true
   keep-history: true
+  local_dir: .out
   on:
     branch: master
-  language: node_js
-  node_js:
-    - "8.11.3"
-  install:
-    - npm install grunt-cli -g
-    - npm install
-  script:
-    - grunt build
