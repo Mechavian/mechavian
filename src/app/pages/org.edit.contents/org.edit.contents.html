@@ -1,0 +1,25 @@
+﻿<div class="alert alert-danger" role="alert" ng-cloak ng-show="!!errorMessage">
+    <div>
+        <i class="fa fa-2x fa-exclamation-triangle"></i>
+        <h4 id="errorText">{{errorMessage}}</h4>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Size (bytes)</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="docLink in docLinks">
+        <td>{{docLink.Name}}</td>
+        <td>{{docLink.SizeInBytes | bytes}}</td>
+        <td>
+            <a target="_blank" ng-href="{{docLink.Url}}" title="Download"><i class="fa fa-fw fa-download"></i></a>
+        </td>
+    </tr>
+    </tbody>
+</table>

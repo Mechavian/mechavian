@@ -1,0 +1,22 @@
+﻿<ma-navbar hide-login="true"></ma-navbar>
+
+<div class="container">
+    <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+        <div class="page-header" ng-hide="isBusy">
+            <h2>Please Sign In</h2>
+        </div>
+
+        <div class="alert alert-danger" role="alert" ng-cloak ng-show="!!errorMessage">
+            <div>
+                <i class="fa fa-2x fa-exclamation-triangle"></i>
+                <h4 id="errorText">{{errorMessage}}</h4>
+            </div>
+        </div>
+
+        <div class="text-center" ng-hide="isBusy">
+            <a href="#" ng-click="signInWithFacebook()">
+                <img src="/images/external/log_in_with_facebook.png"/>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+﻿<div class="alert alert-warning"
+     ng-show="currentUsers >= plan.MaxUsers">
+    Your organization is currently at the maximum capacity of users for
+    your '{{plan.DisplayString}}' plan. To invite additional users consider
+    <a class="alert-link" ui-sref="org.edit.plan({ orgId: org.ShortName })">upgrading your plan</a>.
+</div>
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-condensed table-striped">
+            <thead>
+            <tr>
+                <th class="col-xs-6">User</th>
+                <th class="col-xs-2">Owner</th>
+                <th class="col-xs-2">Member</th>
+                <th class="col-xs-2"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="invite in invitations track by invite.Id">
+                <td>
+                    {{invite.Email}} <small>pending</small>
+                    <i class="fa fa-spinner fa-pulse"
+                       ng-show="member._ui.isBusy"></i>
+                </td>
+                <td>
+                    <input type="radio"
+                           ng-model="invite.RoleId"
+                           ng-value="2"
+                           ng-disabled="invite._ui.isBusy"
+                           ng-change="$parent.updateInvite(invite)"/>
+                </td>
+                <td>
+                    <input type="radio"
+                           ng-model="invite.RoleId"
+                           ng-value="3"
+                           ng-disabled="invite._ui.isBusy"
+                           ng-change="$parent.updateInvite(invite)"/>
+                </td>
+                <td>
+                    <button class="btn btn-borderless btn-xs"
+                            ng-disabled="member._ui.isBusy"
+                            ng-hide="member._ui.isReadOnly"
+                            ng-click="$parent.removeInvite(invite)">
+                        <i class="fa fa-trash"></i>
+                        <span class="sr-only">Remove Invite</span>
+                    </button>
+                </td>
+            </tr>
+            <tr ng-repeat="member in members track by member.UserId">
+                <td>
+                    {{member.User.FirstName}} {{member.User.LastName}}
+                    <small ng-show="member._ui.isReadOnly">(You)</small>
+                    <i class="fa fa-spinner fa-pulse"
+                       ng-show="member._ui.isBusy"></i>
+                </td>
+                <td>
+                    <input type="radio"
+                           ng-model="member.RoleId"
+                           ng-value="2"
+                           ng-disabled="member._ui.isBusy || member._ui.isReadOnly"
+                           ng-change="$parent.updateRole(member)"/>
+                </td>
+                <td>
+                    <input type="radio"
+                           ng-model="member.RoleId"
+                           ng-value="3"
+                           ng-disabled="member._ui.isBusy || member._ui.isReadOnly"
+                           ng-change="$parent.updateRole(member)"/>
+                </td>
+                <td>
+                    <button class="btn btn-borderless btn-xs"
+                            ng-disabled="member._ui.isBusy"
+                            ng-hide="member._ui.isReadOnly"
+                            ng-click="$parent.removeMember(member)">
+                        <i class="fa fa-trash"></i>
+                        <span class="sr-only">Remove Member</span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                    <small>
+                        <i>
+                            {{currentUsers}} of
+                            <span ng-hide="plan.MaxUsers === 2147483647">{{plan.MaxUsers}}</span>
+                            <span ng-show="plan.MaxUsers === 2147483647">&infin;</span>
+                            users
+                        </i>
+                    </small>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="row"
+     ng-show="currentUsers < plan.MaxUsers">
+    <form role="form"
+          name="inviteUserForm"
+          novalidate
+          ng-submit="inviteUser()">
+        <fieldset ng-disabled="isInviting">
+            <div class="form-group"
+                 ng-class="{'has-error': inviteUserForm.inviteEmail.$touched && inviteUserForm.inviteEmail.$error.email}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <label for="invite-email">Invite users to your organization</label>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-show="invited">
+                            <p class="text-success">
+                                <i class="fa fa-check"></i> Invitation sent to '{{invited}}'!
+                            </p>
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <input id="invite-email"
+                                   name="inviteEmail"
+                                   type="email"
+                                   class="form-control"
+                                   placeholder="Enter email address..."
+                                   required
+                                   ng-model="invitedUserEmail">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" 
+                                        type="submit"
+                                        ng-disabled="!inviteUserForm.$valid">
+                                    <span ng-hide="isInviting"><i class="fa fa-envelope"></i> Send Invite</span>
+                                    <span ng-cloak ng-show="isInviting"><i class="fa fa-pulse fa-spinner"></i> Sending...</span>                                    
+                                </button>
+                            </span>
+                        </div>
+                        <div class="text-danger"
+                             ng-show="inviteUserForm.inviteEmail.$touched && inviteUserForm.inviteEmail.$error.email">
+                            <i class="fa fa-asterisk"></i>
+                            A valid email address is required (eg: <code>user@domain.com</code>).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

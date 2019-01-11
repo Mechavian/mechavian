@@ -1,0 +1,48 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h2>
+                {{org.DisplayName}} <small>settings</small>
+                <a class="btn btn-primary btn-sm header-right" ui-sref="org.view({ orgId: org.ShortName })">
+                    <i class="fa fa-reply"></i>
+                </a>
+            </h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-3">
+        <ul class="nav nav-pills nav-stacked org-edit-nav">
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="org.edit.general({ orgId: org.ShortName })">
+                    <i class="fa fa-gear fa-fw"></i> General Settings
+                </a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="org.edit.plan({ orgId: org.ShortName })">
+                    <i class="fa fa-calendar-check-o fa-fw"></i> Subscription Plan
+                </a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="org.edit.users({ orgId: org.ShortName })">
+                    <i class="fa fa-users fa-fw"></i> Users
+                </a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="org.edit.contents({ orgId: org.ShortName })">
+                    <i class="fa fa-book fa-fw"></i> Contents
+                </a>
+            </li>
+            <li role="separator" class="nav-divider"></li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="org.edit.delete({ orgId: org.ShortName })">
+                    <i class="fa fa-warning fa-fw"></i> Delete Organization
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-9">
+        <div ui-view></div>
+    </div>
+</div>

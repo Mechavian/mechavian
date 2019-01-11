@@ -1,0 +1,52 @@
+﻿<div class="alert alert-danger" role="alert" ng-cloak ng-show="!!errorMessage">
+    <div>
+        <i class="fa fa-2x fa-exclamation-triangle"></i>
+        <h4 id="errorText">{{errorMessage}}</h4>
+    </div>
+</div>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">Are you absolutely certain?</h3>
+    </div>
+    <div class="panel-body">
+        <div class="alert alert-warning text-uppercase">
+            <i class="fa fa-warning"></i>
+            This operation cannot be undone
+        </div>
+        <p>
+            Are you absolutely certain you want to delete the organization
+            named <strong>&quot;{{org.DisplayName}}&quot;</strong>? This action 
+            <strong>cannot be undone</strong> and all data and history will be lost.
+        </p>
+
+        <form role="form"
+              name="deleteOrgForm"
+              novalidate
+              ng-disable="isBusy"
+              ng-submit="deleteOrg()">
+            <div class="form-group">
+                <label for="org-validation">Type in your organization name to continue</label>
+                <input type="text"
+                       required
+                       class="form-control"
+                       name="orgValidation"
+                       id="org-validation"
+                       ng-model="inputValue"
+                       ng-disabled="isBusy">
+                <div class="text-danger"
+                     ng-show="deleteOrgForm.orgValidation.$dirty && deleteOrgForm.orgValidation.$invalid">
+                    <i class="fa fa-asterisk"></i>
+                    <span ng-show="deleteOrgForm.orgValidation.$error.required">This field is required.</span>
+                </div>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-danger btn-block"
+                    ng-disabled="!canDelete(inputValue) || isBusy">
+                <i class="fa fa-spinner fa-pulse" ng-show="isBusy"></i>
+                I understand the risks. Delete my Organization
+            </button>
+        </form>
+    </div>
+</div>

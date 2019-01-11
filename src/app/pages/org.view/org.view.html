@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h2 ng-if="showOrgName">
+                {{org.DisplayName}}
+                <a class="btn btn-primary btn-sm header-right" ui-sref="org.edit.general({ orgId: org.ShortName })">
+                    <i class="fa fa-gear"></i>
+                </a>
+            </h2>
+            <h4 ng-if="showDocInfo">
+                {{docLink.Name}}<br />
+                <small>Last Modified: {{docLink.DateModified}}</small>
+            </h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <markdown src="{{docLink.Url}}" />
+    </div>
+</div>
