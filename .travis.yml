@@ -18,6 +18,6 @@ deploy:
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   skip-cleanup: true
   keep-history: true
-  local_dir: .out
+  local_dir: .out/client
   on:
     branch: www-flyingclub-port
