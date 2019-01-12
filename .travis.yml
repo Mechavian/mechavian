@@ -1,11 +1,11 @@
-os: windows
 language: node_js
 node_js:
   - "8.11.3"
 
 before_install:
-  - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/registry/:_authToken=%VSTS_NPM_TOKEN%" >> .npmrc
-  - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/:_authToken=%VSTS_NPM_TOKEN%" >> .npmrc
+  - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/registry/:_authToken=$VSTS_NPM_TOKEN" >> .npmrc
+  - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/:_authToken=$VSTS_NPM_TOKEN" >> .npmrc
+  - head .npmrc
 
 install:
   - npm install grunt-cli -g
