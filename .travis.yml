@@ -6,7 +6,7 @@ before_install:
   - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/registry/:_authToken=$VSTS_NPM_TOKEN" > .npmrc
   - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/:_authToken=$VSTS_NPM_TOKEN" > .npmrc
 
-  install:
+install:
   - npm install grunt-cli -g
   - npm install
 
