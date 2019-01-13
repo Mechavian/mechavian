@@ -14,22 +14,13 @@ install:
   - npm install grunt-cli -g
   - npm install
 
-jobs:
-  include:
-    - stage: build
-      script: grunt release
-      if: branch != master
+script: grunt build
 
-    - stage: build (master)
-      script: grunt release
-      if: branch = master
-
-    - stage: deploy
-      deploy:
-        provider: pages
-        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-        skip-cleanup: true
-        keep-history: true
-        local_dir: .out/client
-        on:
-          branch: master
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  skip-cleanup: true
+  keep-history: true
+  local_dir: .out/client
+  on:
+    branch: master
