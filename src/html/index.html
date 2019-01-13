@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<!--[if lt IE 9]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>Flying Club Management - Coming Soon | Mechavian</title>
+    <meta name="description" content="Manage your commercial or privately owned flying club online with Mechavian to make scheduling and invoicing a breeze.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="application-name" content="Mechavian Flying Club Management">
+
+    <!-- FavIcon and AppleTouch Icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/fi/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/fi/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/fi/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/fi/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/fi/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/fi/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/fi/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/fi/apple-touch-icon-152x152.png">
+    <meta name="apple-mobile-web-app-title" content="Mechavian">
+    <link rel="icon" type="image/png" href="/images/fi/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/images/fi/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/images/fi/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/fi/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/fi/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="/images/fi/mstile-144x144.png">
+    <meta name="msapplication-config" content="/images/fi/browserconfig.xml">
+
+    <!-- injector:css -->
+    <!-- endinjector -->
+
+    <!-- Azure Application Insights -->
+    <!-- TODO: Figure out how to get this back... -->
+    <!-- <script src="/js/application_insight.js"></script> -->
+</head>
+<body ng-app="maApp">
+<!--[if lt IE 9]>
+    <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    </p>
+<![endif]-->
+
+<div ng-show="$root.isLoading">
+    <div class="text-center"
+         style="margin: 25px 30px">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<div ui-view=""
+     ng-show="!$root.isLoading"></div>
+
+<div class="sticky-footer">
+    <div class="container">
+        <p class="text-right text-muted">
+            Copyright <i class="fa fa-copyright"></i> <!-- @echo year --> Mechavian SC, LLC.<br>
+            <!--
+            TODO: Re-enable once docs have been added
+            <a id="termLink" href="/doc/terms.and.services">Terms &amp; Services</a> |
+            <a id="privLink" href="/doc/privacy.policy">Privacy Policy</a>
+            <br>
+            -->
+            Version <!-- @echo version -->
+        </p>
+    </div>
+</div>
+
+<!--[if lt IE 9]>
+    <script src="js/ie.js"></script>
+<![endif]-->
+<script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js" defer async></script>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<!-- injector:js -->
+<!-- endinjector -->
+<!-- @if buildType='development' -->
+<script src="http://localhost:35729/livereload.js?snipver=1"></script>
+<!-- @endif -->
+</body>
+</html>

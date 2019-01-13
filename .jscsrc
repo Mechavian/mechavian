@@ -1,0 +1,7 @@
+{
+    "preset": "google",
+    "validateIndentation": 4,
+    "maximumLineLength": 160,
+    "requireLineFeedAtFileEnd": false,
+    "disallowQuotedKeysInObjects": true
+}

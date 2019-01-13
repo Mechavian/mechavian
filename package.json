@@ -1,0 +1,51 @@
+{
+  "name": "www-flyingclubs",
+  "version": "1.0.763-dev.31",
+  "private": true,
+  "scripts": {
+    "test": "echo Run grunt test to run tests",
+    "start": "node host.js"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.6",
+    "grunt": "^1.0.1",
+    "grunt-angular-templates": "^1.1.0",
+    "grunt-bump": "^0.8.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.0.0",
+    "grunt-contrib-htmlmin": "^2.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-uglify": "^2.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-filerev": "^2.3.1",
+    "grunt-filerev-replace": "^0.1.5",
+    "grunt-injector": "^1.1.0",
+    "grunt-jscs": "^2.7.0",
+    "grunt-karma": "^2.0.0",
+    "grunt-open": "^0.2.3",
+    "grunt-preprocess": "^5.1.0",
+    "grunt-regex-replace": "^0.4.0",
+    "grunt-run": "^0.8.0",
+    "jasmine-core": "^2.5.2",
+    "jquery": "^3.2.1",
+    "json3": "^3.3.2",
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-spec-reporter": "0.0.30",
+    "load-grunt-tasks": "^3.5.2",
+    "mechavian-ui-core": "^1.0.7",
+    "phantomjs-prebuilt": "^2.1.14",
+    "respond.js": "^1.4.2",
+    "time-grunt": "^1.4.0"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}

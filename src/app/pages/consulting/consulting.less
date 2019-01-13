@@ -1,0 +1,16 @@
+﻿@import '../../../less/variables.less';
+
+@consult-header-img-lg: '/images/index/consultingheader_lg.jpg';
+@consult-header-height-lg : 504px;
+@consult-header-height-sm : 554px;
+
+.lp-consultheader {
+  background: url(@consult-header-img-lg) right top no-repeat #FFF;
+  background-size: cover;
+  background-position: center;
+  min-height: @consult-header-height-lg;
+
+  @media (max-width: @screen-sm-max) {
+    min-height: @consult-header-height-sm;
+  }
+}
