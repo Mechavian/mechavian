@@ -17,7 +17,12 @@ install:
 jobs:
   include:
     - stage: build
-      script: grunt build
+      script: grunt release
+      if: branch != master
+
+    - stage: build (master)
+      script: grunt release
+      if: branch = master
 
     - stage: deploy
       deploy:
