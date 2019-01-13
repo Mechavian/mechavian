@@ -1,6 +1,6 @@
 {
   "name": "www-flyingclubs",
-  "version": "1.0.763-dev.29",
+  "version": "1.0.763-dev.30",
   "private": true,
   "scripts": {
     "test": "echo Run grunt test to run tests",

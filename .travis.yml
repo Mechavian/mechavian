@@ -20,4 +20,4 @@ deploy:
   keep-history: true
   local_dir: .out/client
   on:
-    branch: www-flyingclub-port
+    branch: master
