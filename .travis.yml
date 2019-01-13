@@ -2,22 +2,28 @@ language: node_js
 node_js:
   - "8.11.3"
 
-before_install:
-  - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/registry/:_authToken=$VSTS_NPM_TOKEN" >> .npmrc
-  - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/:_authToken=$VSTS_NPM_TOKEN" >> .npmrc
+stages:
+  - build
+  - deploy
 
-install:
-  - npm install grunt-cli -g
-  - npm install
+jobs:
+  include:
+    - stage: build
+      before_install:
+        - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/registry/:_authToken=$VSTS_NPM_TOKEN" >> .npmrc
+        - echo "//mechavian.pkgs.visualstudio.com/_packaging/mechavian/npm/:_authToken=$VSTS_NPM_TOKEN" >> .npmrc
+      install:
+        - npm install grunt-cli -g
+        - npm install
+      script:
+        - grunt build
 
-script:
-  - grunt build
-
-deploy:
-  provider: pages
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  skip-cleanup: true
-  keep-history: true
-  local_dir: .out/client
-  on:
-    branch: master
+    - stage: deploy
+      deploy:
+        provider: pages
+        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        skip-cleanup: true
+        keep-history: true
+        local_dir: .out/client
+        on:
+          branch: master
