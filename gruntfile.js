@@ -427,7 +427,7 @@ module.exports = function(grunt) {
         'bump-only',
         'clean',
         'doBuild',
-        'test',
+        // 'test', // Temporarily removing "test" from releasing
         'bump-commit'
     ]);
 
